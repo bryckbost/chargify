@@ -1,4 +1,6 @@
 *.gem
 .bundle
+.rvmrc
+.travis.yml
 Gemfile.lock
 pkg/*
