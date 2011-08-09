@@ -7,14 +7,14 @@ Gem::Specification.new do |s|
   s.version     = Chargify::VERSION
   s.authors     = ["Steve Richert"]
   s.email       = ["steve.richert@gmail.com"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.homepage    = "https://github.com/laserlemon/chargify"
+  s.summary     = "A Ruby wrapper for the Chargify API"
+  s.description = "A Ruby wrapper for the Chargify API"
 
   s.rubyforge_project = "chargify"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.executables   = `git ls-files -- bin/*`.split("\n").map{|f| File.basename(f) }
   s.require_paths = ["lib"]
 end
