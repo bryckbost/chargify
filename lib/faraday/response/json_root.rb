@@ -5,7 +5,11 @@ module Faraday
     def parse(body)
       case body
       when Hash
-        body.size == 1 ? body.values.first : body
+        if body.size == 1 && body.values.first.is_a?(Hash)
+          parse(body.values.first)
+        else
+          body
+        end
       when Array
         body.map{|e| parse(e) }
       else
