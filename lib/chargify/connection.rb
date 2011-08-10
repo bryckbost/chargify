@@ -14,7 +14,7 @@ module Chargify
             :user_agent => "Chargify Ruby Gem #{VERSION}",
           },
           :ssl => {:verify => false},
-          :url => "https://#{subdomain}.chargify.com/"
+          :url => "https://#{Chargify.subdomain}.chargify.com/"
         }
 
         connection = Faraday.new(options) do |builder|
@@ -27,7 +27,7 @@ module Chargify
           builder.request :UrlEncoded
         end
 
-        connection.basic_auth api_key, "x"
+        connection.basic_auth Chargify.api_key, "x"
         connection
       end
   end
