@@ -1,4 +1,5 @@
 require "chargify"
+require "webmock/rspec"
 
 RSpec.configure do |config|
   config.before do
