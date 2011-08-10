@@ -5,7 +5,7 @@ module Faraday
     dependency "multi_json"
 
     def call(env)
-      env[:body] = MultiJson.encode(env[:body]) if env[:body]
+      env[:body] = MultiJson.encode(env[:body]) if env.key?(:body)
       @app.call(env)
     end
   end
