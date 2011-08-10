@@ -6,6 +6,10 @@ require "faraday/response/server_error"
 
 module Chargify
   module Connection
+    def self.included(base)
+      base.extend Configuration
+    end
+
     private
       def connection
         options = {
@@ -14,7 +18,7 @@ module Chargify
             :user_agent => "Chargify Ruby Gem #{VERSION}",
           },
           :ssl => {:verify => false},
-          :url => "https://#{Chargify.subdomain}.chargify.com/"
+          :url => "https://#{subdomain}.chargify.com/"
         }
 
         connection = Faraday.new(options) do |builder|
@@ -27,7 +31,7 @@ module Chargify
           builder.request :UrlEncoded
         end
 
-        connection.basic_auth Chargify.api_key, "x"
+        connection.basic_auth api_key, "x"
         connection
       end
   end

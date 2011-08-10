@@ -2,6 +2,10 @@ require "chargify/connection"
 
 module Chargify
   module Request
+    def self.included(base)
+      base.send(:include, Connection)
+    end
+
     def get(path, options = {})
       request(:get, path, options)
     end

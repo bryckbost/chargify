@@ -1,5 +1,4 @@
 require "chargify/configuration"
-require "chargify/connection"
 require "chargify/request"
 
 module Chargify
@@ -30,7 +29,6 @@ module Chargify
     include Refunds
     include Statements
 
-    include Connection
     include Request
 
     attr_accessor *Configuration::DEFAULT_OPTIONS.keys
