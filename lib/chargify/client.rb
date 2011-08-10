@@ -29,9 +29,8 @@ module Chargify
     include Refunds
     include Statements
 
+    include Configuration
     include Request
-
-    attr_accessor *Configuration::DEFAULT_OPTIONS.keys
 
     def initialize(options = {})
       Chargify.options.merge(options).each{|k,v| send("#{k}=", v) }

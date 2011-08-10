@@ -2,9 +2,7 @@ require "spec_helper"
 
 describe Chargify::Configuration do
   let :configurable do
-    klass = Class.new
-    klass.extend Chargify::Configuration
-    klass
+    Class.new{ extend Chargify::Configuration }
   end
 
   it "keeps an API key" do

@@ -7,7 +7,7 @@ require "faraday/response/server_error"
 module Chargify
   module Connection
     def self.included(base)
-      base.extend Configuration
+      base.send(:include, Configuration)
     end
 
     private

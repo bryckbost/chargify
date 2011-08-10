@@ -7,6 +7,10 @@ module Chargify
 
     attr_accessor *DEFAULT_OPTIONS.keys
 
+    def self.included(base)
+      base.class_eval{ attr_accessor *DEFAULT_OPTIONS.keys }
+    end
+
     def configure
       yield self
     end
