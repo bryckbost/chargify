@@ -1,6 +1,8 @@
 require "chargify/version"
 require "faraday_middleware"
+require "faraday/response/client_error"
 require "faraday/response/json_root"
+require "faraday/response/server_error"
 
 module Chargify
   module Connection
@@ -11,18 +13,18 @@ module Chargify
             :accept => "application/json",
             :user_agent => "Chargify Ruby Gem #{VERSION}",
           },
-          :ssl => {
-            :verify => false
-          },
+          :ssl => {:verify => false},
           :url => "https://#{subdomain}.chargify.com/"
         }
 
         connection = Faraday.new(options) do |builder|
-          builder.use Faraday::Response::Mashify
-          builder.use Faraday::Response::JsonRoot
-          builder.use Faraday::Response::ParseJson
-          builder.adapter(:net_http)
-          builder.use Faraday::Request::UrlEncoded
+          builder.response :Mashify
+          builder.response :JsonRoot
+          builder.response :ParseJson
+          builder.response :ClientError
+          builder.response :ServerError
+          builder.adapter :net_http
+          builder.request :UrlEncoded
         end
 
         connection.basic_auth api_key, "x"
