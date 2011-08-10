@@ -15,17 +15,17 @@ module Chargify
     require "chargify/client/refunds"
     require "chargify/client/statements"
 
-    include Chargify::Client::Products
-    include Chargify::Client::Components
-    include Chargify::Client::Coupons
-    include Chargify::Client::Customers
-    include Chargify::Client::Subscriptions
-    include Chargify::Client::Transactions
-    include Chargify::Client::Migrations
-    include Chargify::Client::Charges
-    include Chargify::Client::Adjustments
-    include Chargify::Client::Usages
-    include Chargify::Client::Refunds
-    include Chargify::Client::Statements
+    include Products
+    include Components
+    include Coupons
+    include Customers
+    include Subscriptions
+    include Transactions
+    include Migrations
+    include Charges
+    include Adjustments
+    include Usages
+    include Refunds
+    include Statements
   end
 end
