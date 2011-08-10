@@ -19,7 +19,6 @@ module Chargify
 
     def reset
       DEFAULT_OPTIONS.each{|k,v| send("#{k}=", v) }
-      self
     end
   end
 end
