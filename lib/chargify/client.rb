@@ -1,7 +1,9 @@
-require "chargify/api"
+require "chargify/configuration"
+require "chargify/connection"
+require "chargify/request"
 
 module Chargify
-  class Client < API
+  class Client
     require "chargify/client/products"
     require "chargify/client/components"
     require "chargify/client/coupons"
@@ -27,5 +29,14 @@ module Chargify
     include Usages
     include Refunds
     include Statements
+
+    include Connection
+    include Request
+
+    attr_accessor *Configuration::DEFAULT_OPTIONS.keys
+
+    def initialize(options = {})
+      Chargify.options.merge(options).each{|k,v| send("#{k}=", v) }
+    end
   end
 end
