@@ -1,5 +1,6 @@
 require "chargify/version"
 require "faraday_middleware"
+require "faraday/request/encode_json"
 require "faraday/response/client_error"
 require "faraday/response/json_root"
 require "faraday/response/server_error"
@@ -22,13 +23,13 @@ module Chargify
         }
 
         connection = Faraday.new(options) do |builder|
+          builder.request :EncodeJson
           builder.response :Mashify
           builder.response :JsonRoot
           builder.response :ParseJson
           builder.response :ClientError
           builder.response :ServerError
           builder.adapter :net_http
-          builder.request :UrlEncoded
         end
 
         connection.basic_auth api_key, "x"
