@@ -22,5 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "hashie", "~> 1.1.0"
   s.add_runtime_dependency "multi_json", "~> 1.0.3"
 
+  s.add_development_dependency "rake"
   s.add_development_dependency "rspec", "~> 2.6.0"
+  s.add_development_dependency "webmock", "~> 1.7.4"
 end
