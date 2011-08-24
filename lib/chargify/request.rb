@@ -27,18 +27,14 @@ module Chargify
         response = connection.send(method) do |request|
           case method.to_sym
           when :get, :delete
-            request.url(formatted_path(path), params)
+            request.url(path, params)
           when :post, :put
-            request.path = formatted_path(path)
-            request.body = params unless params.empty?
+            request.path = path
+            request.body = params
           end
         end
 
         response.body
-      end
-
-      def formatted_path(path)
-        "#{path}.json".sub(/^\//, "")
       end
   end
 end

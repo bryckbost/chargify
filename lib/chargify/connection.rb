@@ -16,7 +16,7 @@ module Chargify
         options = {
           :headers => {
             :accept => "application/json",
-            :user_agent => "Chargify Ruby Gem #{VERSION}",
+            :user_agent => "Chargify Ruby Gem #{VERSION}"
           },
           :ssl => {:verify => false},
           :url => "https://#{subdomain}.chargify.com/"
