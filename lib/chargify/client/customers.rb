@@ -11,11 +11,11 @@ module Chargify
       end
 
       def create_customer(attributes)
-        post "customers", attributes
+        post "customers", :customer => attributes
       end
 
       def update_customer(id, attributes)
-        put "customers/#{id}", attributes
+        put "customers/#{id}", :customer => attributes
       end
     end
   end
