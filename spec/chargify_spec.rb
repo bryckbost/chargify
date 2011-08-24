@@ -2,14 +2,14 @@ require "spec_helper"
 
 describe Chargify do
   it "claims to respond to client instance methods" do
-    Chargify.instance_methods.should_not include(:customers)
-    Chargify::Client.instance_methods.should include(:customers)
+    Chargify.instance_methods.map(&:to_sym).should_not include(:customers)
+    Chargify::Client.instance_methods.map(&:to_sym).should include(:customers)
     Chargify.should respond_to(:customers)
   end
 
   it "delegates missing methods to a client instance" do
-    Chargify.instance_methods.should_not include(:customer)
-    Chargify::Client.instance_methods.should include(:customer)
+    Chargify.instance_methods.map(&:to_sym).should_not include(:customer)
+    Chargify::Client.instance_methods.map(&:to_sym).should include(:customer)
     Chargify.client.should_receive(:customer).with(1)
     Chargify.customer(1)
   end
