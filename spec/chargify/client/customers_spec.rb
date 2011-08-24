@@ -2,7 +2,8 @@ require "spec_helper"
 
 describe Chargify::Client::Customers do
   let!(:endpoint){ "https://key:x@sub.chargify.com/" }
-  let!(:attributes){ {:first_name => "Steve", :last_name => "Richert"} }
+  let(:attributes){ {:first_name => "Steve", :last_name => "Richert"} }
+  let(:json){ MultiJson.encode(:customer => attributes) }
 
   before do
     Chargify.api_key = "key"
@@ -27,7 +28,7 @@ describe Chargify::Client::Customers do
 
   it "creates a customer" do
     stub_request(:post, "#{endpoint}customers").
-      with(:body => {:customer => attributes}.to_json).
+      with(:body => json).
       to_return(:body => fixture("customer.json"))
     customer = Chargify.create_customer(attributes)
     customer.first_name.should == "Steve"
@@ -35,7 +36,7 @@ describe Chargify::Client::Customers do
 
   it "updates a customer" do
     stub_request(:put, "#{endpoint}customers/800365").
-      with(:body => {:customer => attributes}.to_json).
+      with(:body => json).
       to_return(:body => fixture("customer.json"))
     customer = Chargify.update_customer(800365, attributes)
     customer.first_name.should == "Steve"
