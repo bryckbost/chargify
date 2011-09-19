@@ -14,11 +14,11 @@ module Chargify
       end
 
       def create_subscription(attributes)
-        post "subscriptions", attributes
+        post "subscriptions", :subscription => attributes
       end
 
       def update_subscription(id, attributes)
-        put "subscriptions/#{id}", attributes
+        put "subscriptions/#{id}", :subscription => attributes
       end
 
       def cancel_subscription(id)

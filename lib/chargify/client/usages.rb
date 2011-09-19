@@ -6,7 +6,7 @@ module Chargify
       end
 
       def create_usage(subscription_id, component_id, attributes)
-        post "subscriptions/#{subscription_id}/components/#{component_id}/usages", attributes
+        post "subscriptions/#{subscription_id}/components/#{component_id}/usages", :usage => attributes
       end
     end
   end

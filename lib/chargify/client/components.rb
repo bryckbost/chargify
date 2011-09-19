@@ -18,7 +18,7 @@ module Chargify
       end
 
       def create_component(product_family_id, type, attributes)
-        post "product_families/#{product_family_id}/#{type}", attributes
+        post "product_families/#{product_family_id}/#{type}", :metered_component => attributes
       end
     end
   end
