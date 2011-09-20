@@ -16,6 +16,7 @@ module Chargify
         options = {
           :headers => {
             :accept => "application/json",
+            :content_type => "application/json",
             :user_agent => "Chargify Ruby Gem #{VERSION}"
           },
           :ssl => {:verify => false},
