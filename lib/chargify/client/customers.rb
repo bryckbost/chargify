@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Chargify
   class Client
     module Customers
